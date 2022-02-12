@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpecterEyeMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/Root
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/CoatTail.L
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/CoatTail.R
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/Hip.L
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/Hip.L/Leg1.L
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/Hip.L/Leg1.L/Leg2.L
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/Hip.R
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/Hip.R/Leg1.R
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/Hip.R/Leg1.R/Leg2.R
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/Spine2
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/Spine2/Head
+    m_Weight: 0
+  - m_Path: Armature/Root/Spine1/Spine2/Head/Eyes
+    m_Weight: 1
+  - m_Path: Armature/Root/Spine1/Spine2/Sword
+    m_Weight: 0
+  - m_Path: Specter
+    m_Weight: 0
