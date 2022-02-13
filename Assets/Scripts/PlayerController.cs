@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     //Parameters
     public float moveSpeed = 10.0f;
+    public float dodgeTime = 1f, dodgeDistance = 1f;
     
     //Public variables
     public bool counter = false;
@@ -13,8 +14,12 @@ public class PlayerController : MonoBehaviour
     //Components
     public VirtualJoystick joystick;
     public Animator anim;
-
-
+    public EnemyTracker enemyTracker;
+    
+    private bool movementLocked = false;
+    private bool isDodging = false;
+    private int dodges = 0;
+    
     void Start()
     {
         joystick = this.GetComponent<VirtualJoystick>();
@@ -23,8 +28,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleMovement();
-        if (joystick.ButtonDown)
+        if(!movementLocked && !isDodging)
+            HandleMovement();
+        if (joystick.ButtonDown && !isDodging)
             HandleAction();
         
         HandleAnim();
@@ -41,25 +47,58 @@ public class PlayerController : MonoBehaviour
             transform.position += js;
             transform.forward = js.normalized;
         }
-
-        if (joystick.ButtonDown)
-        {
-            counter = true;
-            anim.SetTrigger("Counter");
-        }
-        else
-        {
-            counter = false;
-        }
     }
 
     void HandleAction()
     {
-        
+        counter = false;
+        if (CanCounter())
+        {
+            //Counter
+            counter = true;
+            anim.SetTrigger("Counter");
+            Debug.Log("SUCCESSFUL COUNTER!");
+        }
+        else
+        {
+            //Dodge
+            StartCoroutine("Dodge");
+        }
+    }
+
+    bool CanCounter()
+    {
+        bool ret = false;
+
+        foreach (GameObject g in enemyTracker.NearbyEnemies)
+        {
+            if (g.GetComponent<EnemyController>().isCounterable)
+            {
+                ret = true;
+            }
+        }
+
+        return ret;
     }
 
     void HandleAnim()
     {
         anim.SetFloat("Run", joystick.Joystick.magnitude);
+    }
+
+    IEnumerator Dodge()
+    {
+        isDodging = true;
+        dodges++;
+        Vector3 dodgeDirection = transform.forward;
+        movementLocked = true;
+        for (float t = 0f; t < dodgeTime; t += Time.deltaTime)
+        {
+            transform.position += dodgeDirection * Time.deltaTime * dodgeDistance;
+
+            yield return null;
+        }
+        movementLocked = false;
+        isDodging = false;
     }
 }

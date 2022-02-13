@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     public bool canSeePlayer = false;
     public bool inAttackRange = false;
     public bool isChasing = false, isAttacking = false;
+    public bool isCounterable = false;
     
     //Components
     public GameManager gm;
@@ -72,5 +73,18 @@ public class EnemyController : MonoBehaviour
         isAttacking = false;
         anim.SetBool("Attack", false);
         //Debug.Log("Attack Has ENDED!!!");
+    }
+
+    void Counterable()
+    {
+        isCounterable = true;
+        
+        //Debug.Log(("COUNTER NOW!"));
+    }
+
+    void NotCounterable()
+    {
+        isCounterable = false;
+        //Debug.Log(("Too Late!"));
     }
 }
