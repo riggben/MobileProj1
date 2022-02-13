@@ -10,19 +10,22 @@ public class EnemyController : MonoBehaviour
     public float sightRange = 20f;
     public float attackRange = 2f;
     public float moveSpeed = 2f;
+    public Vector3 flashOffset = Vector3.up;
     
     //Public Variables
     public bool canSeePlayer = false;
     public bool inAttackRange = false;
     public bool isChasing = false, isAttacking = false;
     public bool isCounterable = false;
+    public bool countered = false;
     
     //Components
     public GameManager gm;
     public Transform player;
     public Animator anim;
-
+    public GameObject flashEffect;
    
+    
     
     void Start()
     {
@@ -68,6 +71,15 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("Chase", false);
     }
 
+
+    public void Countered()
+    {
+        countered = true;
+    }
+    
+    /// <summary>
+    /// These functions are called by animation events
+    /// </summary>
     public void AttackEnd()
     {
         isAttacking = false;
@@ -75,10 +87,15 @@ public class EnemyController : MonoBehaviour
         //Debug.Log("Attack Has ENDED!!!");
     }
 
+    void TelegraphAttack()
+    {
+        Instantiate(flashEffect, transform.position + (flashOffset), new Quaternion(), transform);
+    }
+    
     void Counterable()
     {
         isCounterable = true;
-        
+
         //Debug.Log(("COUNTER NOW!"));
     }
 

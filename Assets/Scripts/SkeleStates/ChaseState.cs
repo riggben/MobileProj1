@@ -6,14 +6,19 @@ public class ChaseState : State
 {
     public AttackState attackState;
     public IdleState idleState;
-
+    public CounteredState counteredState;
+    
     public EnemyController enemyCont;
 
     public override State RunCurrentState()
     {
         Chase();
 
-        if (enemyCont.inAttackRange || enemyCont.isAttacking)
+        if (enemyCont.countered)
+        {
+            return counteredState;
+        }
+        else if (enemyCont.inAttackRange || enemyCont.isAttacking)
         {
             return attackState;
         }

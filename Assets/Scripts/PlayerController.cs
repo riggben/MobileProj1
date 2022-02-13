@@ -1,3 +1,7 @@
+/*
+ * Character controller; a little over-complicated. Consider a state machine.
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,9 +32,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!movementLocked && !isDodging)
+        if(!movementLocked && !isDodging && !counter)
             HandleMovement();
-        if (joystick.ButtonDown && !isDodging)
+        if (joystick.ButtonDown && !isDodging && !counter)
             HandleAction();
         
         HandleAnim();
@@ -47,17 +51,23 @@ public class PlayerController : MonoBehaviour
             transform.position += js;
             transform.forward = js.normalized;
         }
+        
+        
     }
 
     void HandleAction()
     {
         counter = false;
-        if (CanCounter())
+
+        GameObject counterTarget = CanCounter();
+        
+        if (counterTarget != null)
         {
             //Counter
             counter = true;
             anim.SetTrigger("Counter");
-            Debug.Log("SUCCESSFUL COUNTER!");
+            StartCoroutine(Counter(counterTarget.transform));
+            //Debug.Log("SUCCESSFUL COUNTER!");
         }
         else
         {
@@ -66,19 +76,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool CanCounter()
+    GameObject CanCounter()
     {
-        bool ret = false;
+
 
         foreach (GameObject g in enemyTracker.NearbyEnemies)
         {
             if (g.GetComponent<EnemyController>().isCounterable)
             {
-                ret = true;
+                return g;
             }
         }
 
-        return ret;
+        return null;
+
     }
 
     void HandleAnim()
@@ -86,6 +97,23 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Run", joystick.Joystick.magnitude);
     }
 
+
+    IEnumerator Counter(Transform enemy)
+    {
+        enemy.GetComponent<EnemyController>().Countered();
+        
+        while (counter)
+        {
+            transform.LookAt(enemy);
+
+            Vector3 towardsPlayer = transform.position - enemy.position;
+            Vector3 attackPoint = enemy.position + towardsPlayer.normalized;
+            
+            transform.position = Vector3.Lerp(transform.position, attackPoint, 1f);
+            yield return null;
+        }
+    }
+    
     IEnumerator Dodge()
     {
         isDodging = true;
@@ -100,5 +128,13 @@ public class PlayerController : MonoBehaviour
         }
         movementLocked = false;
         isDodging = false;
+    }
+    
+    
+    //called by anim event
+    void AttackEnd()
+    {
+        //Debug.Log("Counter Ended");
+        counter = false;
     }
 }
