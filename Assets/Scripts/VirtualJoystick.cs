@@ -11,7 +11,7 @@ public class VirtualJoystick : MonoBehaviour
     public Vector2 Joystick = Vector2.zero;
     public bool isJoystick = false;
     [FormerlySerializedAs("DodgeTrigger")] public bool ButtonDown = false;
-
+    public float Magnitude = 0;
 
     public bool debug = false;
 
@@ -24,7 +24,7 @@ public class VirtualJoystick : MonoBehaviour
 
     Touch touch0, touch1;
 
-    bool OnFirstTouch = false;
+    public bool OnFirstTouch = false;
     bool TouchOnPrevFrame = false;
     bool SecondTouchOnPrevFrame = false;
 
@@ -99,7 +99,7 @@ public class VirtualJoystick : MonoBehaviour
 
         //present final data to other classes
         Joystick = VirtualJoystickData;
-
+        Magnitude = Joystick.magnitude;
 
         //Place a dot at the center of the joystick
         if (isJoystick)

@@ -14,15 +14,14 @@ public class PlayerController : MonoBehaviour
     
     //Public variables
     public bool counter = false;
+    public GameObject counterTarget = null;
     
     //Components
     public VirtualJoystick joystick;
     public Animator anim;
     public EnemyTracker enemyTracker;
     
-    private bool movementLocked = false;
-    private bool isDodging = false;
-    private int dodges = 0;
+    
     
     void Start()
     {
@@ -32,15 +31,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!movementLocked && !isDodging && !counter)
-            HandleMovement();
-        if (joystick.ButtonDown && !isDodging && !counter)
-            HandleAction();
-        
         HandleAnim();
     }
 
-    void HandleMovement()
+    public void HandleMovement()
     {
         Vector3 js = new Vector3(joystick.Joystick.x, 0f, joystick.Joystick.y);
         js *= Time.deltaTime;
@@ -55,28 +49,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void HandleAction()
-    {
-        counter = false;
-
-        GameObject counterTarget = CanCounter();
-        
-        if (counterTarget != null)
-        {
-            //Counter
-            counter = true;
-            anim.SetTrigger("Counter");
-            StartCoroutine(Counter(counterTarget.transform));
-            //Debug.Log("SUCCESSFUL COUNTER!");
-        }
-        else
-        {
-            //Dodge
-            StartCoroutine("Dodge");
-        }
-    }
-
-    GameObject CanCounter()
+    public GameObject CanCounter()
     {
 
 
@@ -84,6 +57,7 @@ public class PlayerController : MonoBehaviour
         {
             if (g.GetComponent<EnemyController>().isCounterable)
             {
+                counterTarget = g;
                 return g;
             }
         }
@@ -114,27 +88,14 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    IEnumerator Dodge()
-    {
-        isDodging = true;
-        dodges++;
-        Vector3 dodgeDirection = transform.forward;
-        movementLocked = true;
-        for (float t = 0f; t < dodgeTime; t += Time.deltaTime)
-        {
-            transform.position += dodgeDirection * Time.deltaTime * dodgeDistance;
 
-            yield return null;
-        }
-        movementLocked = false;
-        isDodging = false;
-    }
     
     
     //called by anim event
     void AttackEnd()
     {
-        //Debug.Log("Counter Ended");
-        counter = false;
+        anim.SetBool("Attack", false);
+        
+        counterTarget.GetComponent<EnemyController>().Dead();
     }
 }

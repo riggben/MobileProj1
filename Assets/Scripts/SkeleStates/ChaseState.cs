@@ -31,6 +31,11 @@ public class ChaseState : State
             return idleState;
         }
     }
+    
+    public override State OnStateEnter()
+    {
+        return null;
+    }
 
     private void Chase()
     {

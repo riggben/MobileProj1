@@ -20,6 +20,11 @@ public class CounteredState : State
         }
     }
 
+    public override State OnStateEnter()
+    {
+        return null;
+    }
+
     private void Countered()
     {
         //Countered logic

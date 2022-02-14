@@ -30,6 +30,11 @@ public class AttackState : State
             return idleState;
         }
     }
+    
+    public override State OnStateEnter()
+    {
+        return null;
+    }
 
     private void Attack()
     {

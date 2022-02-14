@@ -22,6 +22,11 @@ public class IdleState : State
         }
     }
 
+    public override State OnStateEnter()
+    {
+        return null;
+    }
+    
     private void Idle()
     {
         enemyCont.Idle();

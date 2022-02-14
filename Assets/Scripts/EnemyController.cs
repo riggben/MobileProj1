@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
     public Transform player;
     public Animator anim;
     public GameObject flashEffect;
-   
+    public State deadState;
     
     
     void Start()
@@ -76,7 +76,12 @@ public class EnemyController : MonoBehaviour
     {
         countered = true;
     }
-    
+
+    public void Dead()
+    {
+        anim.SetBool("Dead", true);
+        GetComponent<StateManager>().SetState(deadState);
+    }
     /// <summary>
     /// These functions are called by animation events
     /// </summary>

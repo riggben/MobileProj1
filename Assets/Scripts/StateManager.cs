@@ -13,13 +13,8 @@ public class StateManager : MonoBehaviour
 {
 
     public State currentState;
+    
 
-    public EnemyController enemyCont;
-
-    private void Start()
-    {
-        enemyCont = GetComponent<EnemyController>();
-    }
 
     private void Update()
     {
@@ -31,11 +26,19 @@ public class StateManager : MonoBehaviour
         State nextState = currentState?.RunCurrentState();
 
         if (nextState != null)
+        {
             SwitchToNextState(nextState);
+            currentState.OnStateEnter();
+        }
     }
 
     private void SwitchToNextState(State nextState)
     {
         currentState = nextState;
+    }
+    
+    public void SetState(State state)
+    {
+        currentState = state;
     }
 }
