@@ -33,6 +33,8 @@ public class CounterState_Specter : State
         player.transform.LookAt(playerCont.counterTarget.transform);
         anim.SetTrigger("Counter");
         
+        playerCont.counterTarget.GetComponent<EnemyController>().Countered();
+        
         return null;
     }
     

@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     //Public variables
     public bool counter = false;
     public GameObject counterTarget = null;
+    public int coins = 0, lives = 3, keys = 0;
+    
     
     //Components
     public VirtualJoystick joystick;

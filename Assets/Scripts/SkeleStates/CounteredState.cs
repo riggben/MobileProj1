@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class CounteredState : State
 {
+
+    public float counteredStunTime = 1f;
+    
     public ChaseState chaseState;
     
     public EnemyController enemyCont;
 
+    private float t;
+    
+    
+
     public override State RunCurrentState()
     {
+        t += Time.deltaTime;
+        
         Countered();
 
-        if(enemyCont.countered)
+        if(t < counteredStunTime)
             return this;
         else
         {
@@ -22,6 +31,8 @@ public class CounteredState : State
 
     public override State OnStateEnter()
     {
+
+        t = 0;
         return null;
     }
 
