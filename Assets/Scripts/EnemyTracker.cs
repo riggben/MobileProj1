@@ -31,4 +31,9 @@ public class EnemyTracker : MonoBehaviour
             NearbyEnemies.Remove(other.gameObject);
         }
     }
+
+    public void Remove(GameObject g)
+    {
+        NearbyEnemies.Remove(g);
+    }
 }

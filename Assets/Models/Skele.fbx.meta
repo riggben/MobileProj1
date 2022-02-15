@@ -33,6 +33,15 @@ ModelImporter:
   - first:
       74: 4277097767138232224
     second: Walk (3)
+  - first:
+      74: 7404526443591058890
+    second: rig|_DefaultPose
+  - first:
+      74: 840169638544433234
+    second: rig|CounteredStunned
+  - first:
+      74: 6394785727354027343
+    second: rig|Death
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -73,8 +82,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
-      takeName: Idle
+      name: rig|Idle
+      takeName: rig|Idle
       internalID: 0
       firstFrame: 0
       lastFrame: 120
@@ -102,8 +111,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walk
-      takeName: Walk
+      name: rig|Walk
+      takeName: rig|Walk
       internalID: 0
       firstFrame: 0
       lastFrame: 60
@@ -131,8 +140,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: SpeedWalk
-      takeName: SpeedWalk
+      name: rig|SpeedWalk
+      takeName: rig|SpeedWalk
       internalID: 0
       firstFrame: 0
       lastFrame: 30
@@ -160,8 +169,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Attack
-      takeName: Attack
+      name: rig|Attack
+      takeName: rig|Attack
       internalID: 0
       firstFrame: 0
       lastFrame: 120
@@ -184,14 +193,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.43644068
+      - time: 0.32693058
         functionName: TelegraphAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.44406047
+      - time: 0.42100573
         functionName: Counterable
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -207,6 +216,100 @@ ModelImporter:
         messageOptions: 0
       - time: 0.8305085
         functionName: AttackEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: rig|_DefaultPose
+      takeName: rig|_DefaultPose
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: rig|CounteredStunned
+      takeName: rig|CounteredStunned
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: rig|Death
+      takeName: rig|Death
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 9.9
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.5211864
+        functionName: Despawn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

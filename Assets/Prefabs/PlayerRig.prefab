@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923011906869855335}
-  m_LocalRotation: {x: 0.38268346, y: 0.000000022481213, z: -0.000000009312023, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000022481224, z: 0.0000000093120285, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 20, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8ee32d2671f82de84e196cd65a02f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 2
+  attackDistance: 5
   idleState: {fileID: 1923011907965091180}
   player: {fileID: 1616371109627124806}
 --- !u!1 &1923011907312422203
@@ -287,7 +287,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923011907469280193}
-  m_LocalRotation: {x: 0.38268346, y: 0.000000022481213, z: -0.000000009312023, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000022481224, z: 0.0000000093120285, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 20, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -745,6 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f6af6b7a3b00571983e3b70845becb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCont: {fileID: 0}
 --- !u!1001 &1923011907586515223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -899,6 +900,9 @@ MonoBehaviour:
   dodgeDistance: 35
   counter: 0
   counterTarget: {fileID: 0}
+  coins: 0
+  lives: 3
+  keys: 0
   joystick: {fileID: 1923011907586515210}
   anim: {fileID: 5459907071665953926}
   enemyTracker: {fileID: 1923011907095933922}
@@ -1091,6 +1095,9 @@ MonoBehaviour:
   dodgeDistance: 35
   counter: 0
   counterTarget: {fileID: 0}
+  coins: 0
+  lives: 3
+  keys: 0
   joystick: {fileID: 1923011906839729864}
   anim: {fileID: 5459907071126203917}
   enemyTracker: {fileID: 1923011907095933922}

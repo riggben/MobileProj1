@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
     public Animator anim;
     public GameObject flashEffect;
     public State deadState;
-    
+    public GameObject DeadEnemy;
     
     void Start()
     {
@@ -108,5 +108,12 @@ public class EnemyController : MonoBehaviour
     {
         isCounterable = false;
         //Debug.Log(("Too Late!"));
+    }
+
+    void Despawn()
+    {
+        Instantiate(DeadEnemy, transform.position, transform.rotation);
+        Destroy(this.gameObject);
+        gm.enemyTracker.Remove(this.gameObject);
     }
 }

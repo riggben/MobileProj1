@@ -129,7 +129,7 @@ ModelImporter:
       name: Armature|Attack.002
       takeName: Armature|Attack.002
       internalID: 0
-      firstFrame: 0
+      firstFrame: 3
       lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0

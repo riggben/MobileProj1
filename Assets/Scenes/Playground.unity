@@ -571,6 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1258105712}
+  enemyTracker: {fileID: 531533148}
 --- !u!4 &506635866
 Transform:
   m_ObjectHideFlags: 0
@@ -584,7 +585,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &506635867
 MonoBehaviour:
@@ -603,6 +604,18 @@ MonoBehaviour:
   KeysText: {fileID: 470539481}
   CoinsText: {fileID: 353656722}
   gm: {fileID: 506635865}
+--- !u!114 &531533148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1923011907095933922, guid: 10d747b8d5358e4b0a0fe5c9c55b0a2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1923011908759669369}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c31fb904f90295c692d5fba10e00e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546588154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,7 +1960,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1779395706
 MonoBehaviour:
@@ -2066,6 +2079,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.000000009312023
       objectReference: {fileID: 0}
+    - target: {fileID: 1923011907124972752, guid: 10d747b8d5358e4b0a0fe5c9c55b0a2b,
+        type: 3}
+      propertyPath: attackDistance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1923011907469280194, guid: 10d747b8d5358e4b0a0fe5c9c55b0a2b,
         type: 3}
       propertyPath: m_LocalRotation.y
@@ -2084,7 +2102,7 @@ PrefabInstance:
     - target: {fileID: 1923011908401754540, guid: 10d747b8d5358e4b0a0fe5c9c55b0a2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1923011908401754540, guid: 10d747b8d5358e4b0a0fe5c9c55b0a2b,
         type: 3}
@@ -2158,7 +2176,7 @@ PrefabInstance:
     - target: {fileID: 7341791296582049357, guid: 980389956daa8fe6caf628b0acb31077,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7341791296582049357, guid: 980389956daa8fe6caf628b0acb31077,
         type: 3}

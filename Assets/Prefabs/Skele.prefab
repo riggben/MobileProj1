@@ -1495,6 +1495,8 @@ MonoBehaviour:
   flashEffect: {fileID: 4045884967365915405, guid: bc1ea8d62b7be267781c3362034b1ca1,
     type: 3}
   deadState: {fileID: 7662095857896560168}
+  DeadEnemy: {fileID: 382707599175943673, guid: 29ea953bdad2aa630acee89816e7a698,
+    type: 3}
 --- !u!114 &7662095857727865265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,6 +1730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f6b62ad75b18aea9bca3a3d981ce15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counteredStunTime: 1
   chaseState: {fileID: 7662095857218667367}
   enemyCont: {fileID: 7662095857727865264}
 --- !u!1 &7662095858559569372

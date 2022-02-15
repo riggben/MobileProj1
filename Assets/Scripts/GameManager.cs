@@ -6,5 +6,5 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject Player;
-    
+    public EnemyTracker enemyTracker;
 }

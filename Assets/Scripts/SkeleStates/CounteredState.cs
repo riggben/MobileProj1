@@ -32,6 +32,7 @@ public class CounteredState : State
     public override State OnStateEnter()
     {
 
+        enemyCont.gameObject.GetComponent<Animator>().SetTrigger("Countered");
         t = 0;
         return null;
     }
