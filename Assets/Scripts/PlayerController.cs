@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    IEnumerator Counter(Transform enemy)
+   /* IEnumerator Counter(Transform enemy)
     {
         enemy.GetComponent<EnemyController>().Countered();
         
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, attackPoint, 1f);
             yield return null;
         }
-    }
+    }*/
     
 
     

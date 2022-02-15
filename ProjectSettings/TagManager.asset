@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Coins
+  - Door
   layers:
   - Default
   - TransparentFX
