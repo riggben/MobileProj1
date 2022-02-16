@@ -16,17 +16,18 @@ public class PlayerController : MonoBehaviour
     public bool counter = false;
     public GameObject counterTarget = null;
     public int coins = 0, lives = 3, keys = 0;
-    
+    public bool invulnerable = false;
     
     //Components
     public VirtualJoystick joystick;
     public Animator anim;
     public EnemyTracker enemyTracker;
-    
-    
+
+    private Vector3 spawnPosition;
     
     void Start()
     {
+        spawnPosition = transform.position;
         joystick = this.GetComponent<VirtualJoystick>();
         anim = this.GetComponent<Animator>();
     }
@@ -34,6 +35,22 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleAnim();
+    }
+
+    public void Hurt()
+    {
+        if(!invulnerable)
+            lives--;
+
+        if (lives >= 1)
+        {
+            transform.position = spawnPosition;
+        }
+        else
+        {
+            //Load Game Over Scene   
+            Debug.Log("Game Over not yet implemented!!!");
+        }
     }
 
     public void HandleMovement()
@@ -74,25 +91,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-   /* IEnumerator Counter(Transform enemy)
-    {
-        enemy.GetComponent<EnemyController>().Countered();
-        
-        while (counter)
-        {
-            transform.LookAt(enemy);
 
-            Vector3 towardsPlayer = transform.position - enemy.position;
-            Vector3 attackPoint = enemy.position + towardsPlayer.normalized;
-            
-            transform.position = Vector3.Lerp(transform.position, attackPoint, 1f);
-            yield return null;
-        }
-    }*/
-    
-
-    
-    
     //called by anim event
     void AttackEnd()
     {

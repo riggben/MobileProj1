@@ -28,6 +28,7 @@ public class CounterState_Specter : State
     {
         t = 0;
 
+        playerCont.invulnerable = true;
         Vector3 awayFromEnemy = player.transform.position - playerCont.counterTarget.transform.position;
         player.transform.position += awayFromEnemy.normalized * counterDistance;
         player.transform.LookAt(playerCont.counterTarget.transform);

@@ -21,6 +21,7 @@ public class RunState_Specter : State
     
     public override State OnStateEnter()
     {
+        playerCont.invulnerable = false;
         return null;
     }
     

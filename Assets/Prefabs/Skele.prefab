@@ -1378,6 +1378,65 @@ Transform:
   m_Father: {fileID: 4836844620272592810}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7017022376578883580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452260760730807314}
+  - component: {fileID: 5508876592697411738}
+  - component: {fileID: 200152058726096474}
+  m_Layer: 0
+  m_Name: HurtBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &452260760730807314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017022376578883580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7917190617394398587}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5508876592697411738
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017022376578883580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 3, z: 3}
+  m_Center: {x: 0, y: 2, z: 2}
+--- !u!114 &200152058726096474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017022376578883580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59509e89bd1a5c2709590fd0026c7103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIsInRange: 0
 --- !u!1 &7391623357519175617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1473,7 @@ Transform:
   - {fileID: 4836844620272592810}
   - {fileID: 4943202054049473053}
   - {fileID: 7662095856648225616}
+  - {fileID: 452260760730807314}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1480,7 +1540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightRange: 20
-  attackRange: 5
+  attackRange: 3
   moveSpeed: 10
   flashOffset: {x: 0, y: 4, z: 0}
   canSeePlayer: 0
@@ -1497,6 +1557,7 @@ MonoBehaviour:
   deadState: {fileID: 7662095857896560168}
   DeadEnemy: {fileID: 382707599175943673, guid: 29ea953bdad2aa630acee89816e7a698,
     type: 3}
+  hurtBox: {fileID: 200152058726096474}
 --- !u!114 &7662095857727865265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1730,9 +1791,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f6b62ad75b18aea9bca3a3d981ce15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counteredStunTime: 1
+  counteredStunTime: 2
   chaseState: {fileID: 7662095857218667367}
   enemyCont: {fileID: 7662095857727865264}
+  t: 0
 --- !u!1 &7662095858559569372
 GameObject:
   m_ObjectHideFlags: 0

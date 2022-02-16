@@ -22,6 +22,7 @@ public class DodgeState_Specter : State
 
     public override State OnStateEnter()
     {
+        playerCont.invulnerable = true;
         t = 0f;
         return null;
     }
@@ -36,6 +37,7 @@ public class DodgeState_Specter : State
 
         if (t >= dodgeTime)
         {
+            playerCont.invulnerable = false;
             return runState;
         }
         else

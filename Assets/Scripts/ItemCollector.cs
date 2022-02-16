@@ -15,5 +15,10 @@ public class ItemCollector : MonoBehaviour
             playerCont.coins++;
             Destroy(other.gameObject);
         }
+        else if(other.CompareTag("Key"))
+        {
+            playerCont.keys++;
+            Destroy(other.gameObject);
+        }
     }
 }

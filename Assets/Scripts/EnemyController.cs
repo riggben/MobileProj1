@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     public GameObject flashEffect;
     public State deadState;
     public GameObject DeadEnemy;
+    public EnemyHurtBox hurtBox;
     
     void Start()
     {
@@ -82,9 +83,20 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("Dead", true);
         GetComponent<StateManager>().SetState(deadState);
     }
+
+
     /// <summary>
     /// These functions are called by animation events
     /// </summary>
+
+    void AttackDamage()
+    {
+        if (hurtBox.playerIsInRange)
+        {
+            player.gameObject.GetComponent<PlayerController>().Hurt();
+        }
+    }
+    
     public void AttackEnd()
     {
         isAttacking = false;

@@ -11,20 +11,22 @@ public class CounteredState : State
     
     public EnemyController enemyCont;
 
-    private float t;
+    public float t;
     
     
 
     public override State RunCurrentState()
     {
         t += Time.deltaTime;
-        
+
+
         Countered();
 
         if(t < counteredStunTime)
-            return this;
+            return null;
         else
         {
+            enemyCont.countered = false;
             return chaseState;
         }
     }
@@ -34,6 +36,8 @@ public class CounteredState : State
 
         enemyCont.gameObject.GetComponent<Animator>().SetTrigger("Countered");
         t = 0;
+        
+        Debug.Log("CounteredStart");
         return null;
     }
 
