@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-
+    
     public Image muteIcon, unMuteIcon;
     public string levelToLoad;
 
@@ -20,6 +21,7 @@ public class MenuManager : MonoBehaviour
 
     public void Play()
     {
+        
         SceneManager.LoadScene(levelToLoad);
     }
 }

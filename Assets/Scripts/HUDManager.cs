@@ -16,7 +16,9 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         playerCont = gm.Player.GetComponent<PlayerController>();
+        
     }
 
     private void Update()
@@ -32,4 +34,6 @@ public class HUDManager : MonoBehaviour
         KeysText.text = playerCont.keys.ToString();
         CoinsText.text = playerCont.coins.ToString();
     }
+    
+    
 }

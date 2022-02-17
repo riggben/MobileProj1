@@ -24,11 +24,13 @@ public class PlayerController : MonoBehaviour
     public VirtualJoystick joystick;
     public Animator anim;
     public EnemyTracker enemyTracker;
-
+    public GameManager gm;
+    
     private Vector3 spawnPosition;
     
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         spawnPosition = transform.position;
         joystick = this.GetComponent<VirtualJoystick>();
         anim = this.GetComponent<Animator>();
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             //Load Game Over Scene  
             transform.position = spawnPosition;
-            Debug.Log("Game Over not yet implemented!!!");
+            gm.GameOver();
         }
     }
 
