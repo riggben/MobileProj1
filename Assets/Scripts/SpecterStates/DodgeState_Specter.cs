@@ -12,16 +12,18 @@ public class DodgeState_Specter : State
     public GameObject player;
 
     private PlayerController playerCont;
-    
+    private Animator anim;
     private float t;
-
     private void Start()
     {
         playerCont = player.GetComponent<PlayerController>();
+        anim = player.GetComponent<Animator>();
     }
 
     public override State OnStateEnter()
     {
+        anim.SetTrigger("Dodge");
+        playerCont.dodging = true;
         playerCont.invulnerable = true;
         t = 0f;
         return null;
@@ -35,15 +37,17 @@ public class DodgeState_Specter : State
         t += Time.deltaTime;
         player.transform.position += dodgeDirection * Time.deltaTime * dodgeDistance;
 
-        if (t >= dodgeTime)
+        
+        if(playerCont.dodging)
+        {
+            return null;
+        }
+        else
         {
             playerCont.invulnerable = false;
             return runState;
         }
-        else
-        {
-            return null;
-        }
+  
     }
 
 

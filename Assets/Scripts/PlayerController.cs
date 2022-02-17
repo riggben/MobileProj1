@@ -2,6 +2,7 @@
  * Character controller; a little over-complicated. Consider a state machine.
  */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public GameObject counterTarget = null;
     public int coins = 0, lives = 3, keys = 0;
     public bool invulnerable = false;
+    public bool dodging = false;
     
     //Components
     public VirtualJoystick joystick;
@@ -41,14 +43,21 @@ public class PlayerController : MonoBehaviour
     {
         if(!invulnerable)
             lives--;
+        
+        anim.SetTrigger("Die");
+        
+    }
 
+    private void Respawn()
+    {
         if (lives >= 1)
         {
             transform.position = spawnPosition;
         }
         else
         {
-            //Load Game Over Scene   
+            //Load Game Over Scene  
+            transform.position = spawnPosition;
             Debug.Log("Game Over not yet implemented!!!");
         }
     }
@@ -91,6 +100,15 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Fallout"))
+        {
+            invulnerable = false;
+            Hurt();
+        }
+    }
+
 
     //called by anim event
     void AttackEnd()
@@ -98,5 +116,10 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Attack", false);
         
         counterTarget.GetComponent<EnemyController>().Dead();
+    }
+
+    private void DodgeEnd()
+    {
+        dodging = false;
     }
 }

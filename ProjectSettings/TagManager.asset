@@ -8,11 +8,12 @@ TagManager:
   - Coins
   - Door
   - Key
+  - Fallout
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - FalloutPlane
   - Water
   - UI
   - 

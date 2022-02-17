@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Door : MonoBehaviour
     
     public List<GameObject> Locks = new List<GameObject>();
 
+    public string nextLevel = "";
+    
     public GameManager gm;
     
     
@@ -51,5 +54,15 @@ public class Door : MonoBehaviour
     private void Open()
     {
         GetComponent<Animator>().SetTrigger("Open");
+    }
+
+    private void LoadNextLevel()
+    {
+        if(nextLevel != "")
+            SceneManager.LoadScene(nextLevel);
+        else
+        {
+            Debug.Log("NO NEXT LEVEL SET!");
+        }
     }
 }
