@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   enemyTracker: {fileID: 0}
-  currentScene: 
-  prevScene: 
+  MusicVolume: 0.3
+  volumeScale: 0.5

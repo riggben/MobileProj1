@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
-
+    public float volumeScale = 1.0f;
+    public bool mute = false;
+    
     public string prevScene, currentScene;
     
     public void NewScene()

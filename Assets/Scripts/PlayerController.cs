@@ -6,12 +6,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
     //Parameters
     public float moveSpeed = 10.0f;
     public float dodgeTime = 1f, dodgeDistance = 1f;
+    public float footstepvolume = 0.5f, dodgeVolume = 1.0f, attackVolume = 1.0f;
     
     //Public variables
     public bool counter = false;
@@ -25,7 +27,11 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public EnemyTracker enemyTracker;
     public GameManager gm;
+    public List<AudioClip> FootstepSounds = new List<AudioClip>();
+    public AudioClip dodgeSound, attackSound;
     
+    private GameData gd;
+    private AudioSource audioSource;
     private Vector3 spawnPosition;
     
     void Start()
@@ -34,6 +40,8 @@ public class PlayerController : MonoBehaviour
         spawnPosition = transform.position;
         joystick = this.GetComponent<VirtualJoystick>();
         anim = this.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        gd = GameObject.Find("GameData").GetComponent<GameData>();
     }
 
     void Update()
@@ -123,5 +131,22 @@ public class PlayerController : MonoBehaviour
     private void DodgeEnd()
     {
         dodging = false;
+    }
+
+    private void Footstep()
+    {
+        int i = Random.Range(0, FootstepSounds.Count);
+        
+        audioSource.PlayOneShot(FootstepSounds[i], gd.volumeScale * footstepvolume);
+    }
+
+    private void DodgeSound()
+    {
+        audioSource.PlayOneShot(dodgeSound, gd.volumeScale * dodgeVolume);
+    }
+
+    private void AttackSound()
+    {
+        audioSource.PlayOneShot(attackSound, gd.volumeScale * attackVolume);
     }
 }
